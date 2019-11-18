@@ -1,0 +1,7 @@
+Votre programme doit compiler avec le flag -D BUFFER_SIZE=xx Ce define doit
+être utilisé dans vos appels de read du get_next_line, pour définir la taille
+du buffer. Cette valeur sera modifiée lors de l’évaluation et par la moulinette.
+Enfin, nous considérons que get_next_line a un comportement indeterminé si nous
+lisons un fichier binaire. Cependant, si vous le souhaitez, vous pouvez rendre
+ce comportement cohérent.
+ELYAS FOREVER LOVE
