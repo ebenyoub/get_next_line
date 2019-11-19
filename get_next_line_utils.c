@@ -6,7 +6,7 @@
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:53:24 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/15 19:31:14 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 20:55:04 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,12 +63,11 @@ int		ft_strchr(const char *s, char c)
 	int		i;
 
 	i = 0;
-	while (s[i])
-		if (s[i] == c)
-			return (i);
-		else
-			i++;
-	return (0);
+	while (s[i] && (s[i] != c))
+		i++;
+	if (s[i] == '\0')
+		return (0);
+	return (i);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

@@ -6,64 +6,80 @@
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:53:29 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/15 20:12:03 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/19 18:35:07 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int		check_error(int fd, char **tmp)
+{
+	if (fd < 0)
+		return (-1);
+	if (!(*tmp))
+	{
+		if (!((*tmp) = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+			return (-1);
+	}
+	return (0);
+}
+
+char	*read_line(int fd, char *tmp)
+{
+	char	buffer[BUFFER_SIZE + 1];
+	char	len;
+
+	while ((len = read(fd, buffer, BUFFER_SIZE)) > 0)
+	{
+		buffer[len] = '\0';
+		tmp = ft_strjoin(tmp, buffer);
+	}
+	return (tmp);
+}
+
 int		get_next_line(int fd, char **line)
 {
-	static int		len;
-	static int		stop;
+	int				i;
 	char			buffer[BUFFER_SIZE + 1];
 	static char		*tmp;
 
-	if (fd < 0)
+	if (check_error(fd, &tmp) == -1)
 		return (-1);
-	while ((len = read(fd, buffer, BUFFER_SIZE)) >= 0)
+	if (*tmp)
+		(*line) = ft_strdup(tmp);
+	tmp = read_line(fd, tmp);
+	i = 0;
+	if (tmp[i])
 	{
-		stop = 0;
-		buffer[len] = '\0';
-		if (tmp == NULL)
-			tmp = ft_strdup(buffer);
+		while (tmp[i] && tmp[i] != '\n')
+			i++;
+		if (i == 0)
+			(*line) = ft_strdup("");
 		else
-			if (!(tmp = ft_strjoin(tmp, buffer)))
-				return (-1);
-		if (ft_strchr(tmp, '\n') > 0)
-			stop = ft_strchr(tmp, '\n');
-		if (ft_strchr(tmp, '\n') == 0 && len == 0)
-			stop = ft_strlen(tmp);
-		if (stop > 0)
 		{
-			if (!(*line = ft_substr(tmp, 0, stop)))
-			{
-				free(tmp);
-				return (-1);
-			}
-			tmp = &tmp[stop + 1];
-			return (1);
+				*line = ft_substr(tmp, 0, i);
+				tmp = &tmp[i + 1];
 		}
-		if (ft_strchr(tmp, '\n') == 0 && len == 0)
-		{
-			free(tmp);
-			return (0);
-		}
+		return (1);
 	}
-	free(tmp);
-	free(buffer);
-	return (-1);
+	else
+		(*line) = ft_strdup("");
+	return (0);
 }
 
 int		main(void)
 {
 	int fd;
 	char	*line;
-	int 	i = 9;
+	int 	i = 1;
 
 	fd = open("fichier.txt", O_RDONLY);
-	while (i-- >= 0)
-		printf("%d\t%s\n", get_next_line(fd, &line), line);
+	line = ft_strdup("");
+	while (i != 0)
+	{
+		i = get_next_line(fd, &line);
+		printf("%d\t%s\n", i, line);
+	}
 	return (0);
 }
