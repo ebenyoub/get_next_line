@@ -6,7 +6,7 @@
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:53:32 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 20:45:55 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 18:52:34 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strchr(char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		end_or_not(char *tmp);
+int		get_next_line(int fd, char **line);
+int		fill_buffer(int len, char *buffer, char **tmp);
+int		new_line(char **tmp, int len, char **line);
+int		end_line(char **tmp, int len, char **line);
 
 #endif

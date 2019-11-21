@@ -6,7 +6,7 @@
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:53:29 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 20:49:06 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 19:07:12 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,13 +69,13 @@ int		fill_buffer(int len, char *buffer, char **tmp)
 	return (0);
 }
 
-int		next_get_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
 	int				len;
 	char			buffer[BUFFER_SIZE + 1];
 	static char		*tmp;
 
-	if (fd == -1 || line == NULL)
+	if (fd == -1 || !line)
 		return (-1);
 	while (ft_strchr(tmp) == 0)
 	{
@@ -88,21 +88,4 @@ int		next_get_line(int fd, char **line)
 			break ;
 	}
 	return (new_line(&tmp, len, line));
-}
-
-int		main(void)
-{
-	int				fd;
-	char			*line;
-	int				i;
-
-	i = 1;
-	fd = open("bible.txt", O_RDONLY);
-	while (i > 0)
-	{
-		i = next_get_line(fd, &line);
-		printf("%d\t%s\n", i, line);
-		free(line);
-	}
-	return (0);
 }
