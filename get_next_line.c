@@ -6,7 +6,7 @@
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:53:29 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 19:07:12 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 17:21:05 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,6 +33,11 @@ int		new_line(char **tmp, int len, char **line)
 	char			*clean;
 
 	i = 0;
+	if (*tmp == '\0')
+	{
+		*line = ft_strdup("");
+		return (0);
+	}
 	while ((*tmp)[i] != '\n' && (*tmp)[i] != '\0')
 		i++;
 	if ((*tmp)[i] == '\n')
@@ -75,7 +80,7 @@ int		get_next_line(int fd, char **line)
 	char			buffer[BUFFER_SIZE + 1];
 	static char		*tmp;
 
-	if (fd == -1 || !line)
+	if (!(line) || fd < 0 || BUFFER_SIZE < 1 || (read(fd, NULL, 0) < 0))
 		return (-1);
 	while (ft_strchr(tmp) == 0)
 	{
