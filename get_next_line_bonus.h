@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   get_next_line_bonus.h                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/08 14:53:32 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 13:00:00 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/15 14:09:04 by ebenyoub     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/15 14:10:30 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.c                                  .::    .:/ .      .::   */
+/*   get_next_line_bonus.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/08 14:53:29 by ebenyoub     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 13:00:29 by ebenyoub    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/15 14:07:00 by ebenyoub     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/15 14:09:21 by ebenyoub    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int		end_line(char **tmp, int len, char **line)
 {
